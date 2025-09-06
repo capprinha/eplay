@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes} from 'react-router-dom'
 
 import Home from './pages/Home'
 import Categories from './pages/Categories'
+import Product from './pages/Product'
 
 
 const Rotas = () => {
@@ -10,6 +11,7 @@ const Rotas = () => {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/categorias' element={<Categories/>}/>
+      <Route path='/product/:id' element={<Product/>} />
     </Routes>
   )
 }
