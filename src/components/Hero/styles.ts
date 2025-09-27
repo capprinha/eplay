@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { cores } from "../../styles";
-import { TagContainer } from "../Tag/styles";
+import styled from 'styled-components'
+import { breakpoints, cores } from '../../styles'
+import { TagContainer } from '../Tag/styles'
 
 export const Banner = styled.div`
   position: relative;
@@ -9,11 +9,15 @@ export const Banner = styled.div`
   width: 100%;
 
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
   padding-top: 16px;
 
-  &::after{
+  @media (max-width: ${breakpoints.tablet}) {
+    background-size: cover;
+  }
+
+  &::after {
     position: absolute;
     background-color: #000;
     width: 100%;
@@ -24,7 +28,7 @@ export const Banner = styled.div`
     opacity: 0.56;
   }
 
-  .container{
+  .container {
     z-index: 1;
     position: relative;
     display: flex;
@@ -33,7 +37,7 @@ export const Banner = styled.div`
     justify-content: space-between;
   }
 
-  ${TagContainer}{
+  ${TagContainer} {
     margin-right: 8px;
   }
 `
@@ -44,14 +48,14 @@ export const Infos = styled.div`
   max-width: 290px;
   font-weight: bold;
 
-  h2{
+  h2 {
     font-size: 32px;
   }
-  p{
+  p {
     font-size: 18px;
     margin: 16px 0;
 
-    span{
+    span {
       display: block;
       text-decoration: line-through;
     }

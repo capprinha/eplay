@@ -1,4 +1,4 @@
-import { Container , Title} from './styles'
+import { Container, Title } from './styles'
 
 export type Props = {
   title: string
@@ -6,16 +6,14 @@ export type Props = {
   children: JSX.Element
 }
 
-const Section = ({title, background, children}:Props) => {
-
-  return(
+const Section = ({ title, background, children }: Props) => {
+  return (
     <Container background={background}>
-      <div className='container'>
+      <div className="container">
         <Title>{title}</Title>
         {children}
       </div>
     </Container>
-
   )
 }
 

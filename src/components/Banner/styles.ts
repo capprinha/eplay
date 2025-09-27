@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { TagContainer } from "../Tag/styles";
+import styled from 'styled-components'
+import { TagContainer } from '../Tag/styles'
 
 export const Imagem = styled.div`
   width: 100%;
@@ -10,17 +10,17 @@ export const Imagem = styled.div`
   font-weight: bold;
   position: relative;
 
-  &::after{
+  &::after {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color:  rgba(0,0,0, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     content: '';
   }
 
-  .container{
+  .container {
     position: relative;
     padding-top: 340px;
     display: flex;
@@ -29,7 +29,7 @@ export const Imagem = styled.div`
     z-index: 1;
   }
 
-  ${TagContainer}{
+  ${TagContainer} {
     position: absolute;
     top: 32px;
   }
@@ -44,7 +44,7 @@ export const Preco = styled.p`
   font-size: 24px;
   margin-top: 24px;
 
-  span{
+  span {
     text-decoration: line-through;
   }
 `

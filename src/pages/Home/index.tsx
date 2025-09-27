@@ -1,13 +1,7 @@
-import { useEffect, useState } from "react"
+import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
 
-import Banner from "../../components/Banner"
-import ProductsList from "../../components/ProductsList"
-
-
-import resident from '../../assets/images/resident.png'
-import diablo from '../../assets/images/diablo.png'
-import zelda from '../../assets/images/zelda.png'
-import starWars from '../../assets/images/star_wars.png'
+import Banner from '../../components/Banner'
+import ProductsList from '../../components/ProductsList'
 
 export interface GalleryItem {
   type: 'image' | 'video'
@@ -15,9 +9,10 @@ export interface GalleryItem {
 }
 
 export type Game = {
-  id:number;
-  name: string;
-  description:string;
+  reduce(arg0: (accumulator: any, currentItem: any) => any, arg1: number): unknown
+  id: number
+  name: string
+  description: string
   release_date?: number
   prices: {
     discount?: number
@@ -34,33 +29,34 @@ export type Game = {
   media: {
     thumbnail: string
     cover: string
-    gallery : GalleryItem[]
+    gallery: GalleryItem[]
   }
-
 }
 
-const Home = () =>{
+const Home = () => {
+  const { data: onSaleGames } = useGetOnSaleQuery()
+  const { data: soonGames } = useGetSoonQuery()
 
-  const [ promocoes, setPromocoe] = useState<Game[]>([])
-  const [ emBreve, setEmBreve ] = useState<Game[]>([])
-
-  useEffect(()=>{
-    fetch('https://ebac-fake-api.vercel.app/api/eplay/promocoes')
-    .then(res => res.json())
-    .then(res => setPromocoe(res))
-
-    fetch('https://ebac-fake-api.vercel.app/api/eplay/em-breve')
-    .then(res => res.json())
-    .then(res => setEmBreve(res))
-  },[])
-
-  return(
-    <>
-      <Banner />
-      <ProductsList games={promocoes} title='Promoções' background='gray' />
-      <ProductsList games={emBreve} title='Em breve' background='black' />
-    </>
-  )
+  if (soonGames && onSaleGames) {
+    return (
+      <>
+        <Banner />
+        <ProductsList
+          games={onSaleGames}
+          title="Promoções"
+          background="gray"
+          id="on-sale"
+        />
+        <ProductsList
+          games={soonGames}
+          title="Em breve"
+          background="black"
+          id="coming-soon"
+        />
+      </>
+    )
+  }
+  return <h4>Carregando...</h4>
 }
 
 export default Home
