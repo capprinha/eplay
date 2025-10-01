@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import Section from '../Section'
-import { GalleryItem } from '../../pages/Home'
+import { GalleryItem } from '../../types'
 
 import maiszoom from '../../assets/images/mais-zoom.png'
 import play from '../../assets/images/botao-play.png'
@@ -17,6 +17,7 @@ type Props = {
 
 interface ModalState extends GalleryItem {
   isVisible: boolean
+  type: 'image' | 'video'
 }
 
 const Gallery = ({ defaultCover, name, items }: Props) => {

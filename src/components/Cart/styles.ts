@@ -40,6 +40,13 @@ export const Sidebar = styled.aside`
     max-width: 100%;
     width: 100%;
   }
+
+  .empty-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${cores.branca};
+    text-align: center;
+  }
 `
 export const Prices = styled.p`
   font-weight: bold;
